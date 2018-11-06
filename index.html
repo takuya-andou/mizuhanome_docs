@@ -1,0 +1,665 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#ddc24db4d7" class="toc-h1 toc-link" data-title="ようこそ">ようこそ</a>
+          </li>
+          <li>
+            <a href="#7e053920c1" class="toc-h1 toc-link" data-title="セッション">セッション</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#1bff7d7a22" class="toc-h2 toc-link" data-title="認証">認証</a>
+                  </li>
+                  <li>
+                    <a href="#9930913113" class="toc-h2 toc-link" data-title="セッションの更新">セッションの更新</a>
+                  </li>
+                  <li>
+                    <a href="#ea637c4436" class="toc-h2 toc-link" data-title="セッションの破棄">セッションの破棄</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#fb9bd201e0" class="toc-h1 toc-link" data-title="みんなの予想">みんなの予想</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#d974773891" class="toc-h2 toc-link" data-title="投稿する">投稿する</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://v2.mizuhanome.net/users/keys'>APIキーの作成</a></li>
+            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='ddc24db4d7'>ようこそ</h1>
+<p><strong>みずはのめAPI v1</strong>は現在、以下のエンドポイントから提供されています</p>
+
+<p><code>https://v2.mizuhanome.net/api/v1/</code></p>
+
+<p>みずはのめAPIv1は現在、開発中です。以下のことをご了承のうえ、ご利用ください：</p>
+
+<ul>
+<li>ユーザー情報が消える可能性があります</li>
+<li>仕様が頻繁に変更されます</li>
+</ul>
+<h1 id='7e053920c1'>セッション</h1><h2 id='1bff7d7a22'>認証</h2>
+<blockquote>
+<p>以下のようなPOSTリクエストでメールアドレスとアクセスキーを送信します:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="nb">export </span><span class="nv">email</span><span class="o">=</span>yourMailAddress
+<span class="nb">export </span><span class="nv">accessKey</span><span class="o">=</span>yourAccessKey
+curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/authenticate?email=</span><span class="nv">$email</span><span class="s2">&amp;accessKey=</span><span class="nv">$accessKey</span><span class="s2">"</span>
+</code></pre>
+<blockquote>
+<p>認証成功時、以下のようなJSONが帰ります:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"認証しました"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"session"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySessionKey"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"expiredAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1539365293333</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>APIキーセッション<code>mySessionKey</code>を以降のAPI利用時に使用します</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="nb">export </span><span class="nv">session</span><span class="o">=</span>mySessionKey
+</code></pre>
+<p>APIキーをお持ちでない場合、<a href="https://v2.mizuhanome.net/users/keys">APIキーの作成</a>から、あたらしいAPIキーを作成します。</p>
+
+<aside class="notice">
+<code>yourMailAddress</code>をあなたのアカウントのメールアドレス, <code>yourAccessKey</code>をあなたのAPIキーに置き換えて下さい。メールアドレスに<code>+</code>など文字を含む場合、<a href="https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%BC%E3%82%BB%E3%83%B3%E3%83%88%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0">URLエンコード</a>が必要です
+</aside>
+<h2 id='9930913113'>セッションの更新</h2>
+<blockquote>
+<p>以下のようなPOSTリクエストを送信します:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/refresh?session=</span><span class="nv">$session</span><span class="s2">"</span>
+</code></pre>
+<blockquote>
+<p>更新が完了すると、以下のようなJSONが帰ります:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"expiredAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1539368410718</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>（<code>expiredAt</code>はUnixTimeを1000で掛けたものです）</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>date -r <span class="k">$((</span><span class="m">1539368410718</span><span class="o">/</span><span class="m">1000</span><span class="k">))</span>
+<span class="c"># 2018年 10月13日 土曜日 03時20分10秒 JST</span>
+</code></pre>
+<p>作成したセッションは１時間で失効します、これを再度１時間に延長します。</p>
+<h2 id='ea637c4436'>セッションの破棄</h2>
+<blockquote>
+<p>以下のようなPOSTリクエストを送信します:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/destroy?session=</span><span class="nv">$session</span><span class="s2">"</span>
+</code></pre>
+<blockquote>
+<p>破棄が完了すると、以下のようなJSONが帰ります:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>指定したセッションを即座に破棄します</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://v2.mizuhanome.net/api/v1/destroy</code></p>
+<h1 id='fb9bd201e0'>みんなの予想</h1><h2 id='d974773891'>投稿する</h2><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"tickets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>上記のようなPOSTデータが最小の投稿情報です、以下のように送信します：</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/forecasts/201810130601?session=</span><span class="nv">$session</span><span class="s2">"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{"tickets":[{"numbers":[{"numberset":"123"}]}]}'</span>
+</code></pre>
+<blockquote>
+<p>投稿成功時、以下のようなJSONが帰ります:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/forecasts/31"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dataid"</span><span class="p">:</span><span class="w"> </span><span class="mi">201810130601</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tickets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3t"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"numbersets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1-2-3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>また、以下のように複数の券を購入したり、一部の組番だけ賭け金を変更したい場合は、以下のようにデータを追記します：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"色々詰め込み過ぎた</span><span class="se">\n</span><span class="s2">今は反省している"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tickets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"formation"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2f"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2t"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3f"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"formation"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"124"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"125"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"126"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"213"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"214"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"215"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"216"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/forecasts/201810130601?session=</span><span class="nv">$session</span><span class="s2">"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{"note":"色々詰め込み過ぎた\n今は反省している","price":1,"tickets":[{"mode":"formation","type":"2f","numbers":[{"numberset":"12"}]},{"mode":"box","type":"2t","numbers":[{"numberset":"123"}]},{"type":"3f","numbers":[{"numberset":"123"}]},{"mode":"formation","numbers":[{"numberset":"123"},{"numberset":"124"},{"numberset":"125"},{"numberset":"126"},{"numberset":"213","bet":10000},{"numberset":"214"},{"numberset":"215"},{"numberset":"216"}]}]}'</span>
+</code></pre>
+<blockquote>
+<p>投稿成功時、以下のようなJSONが帰ります:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/forecasts/32"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dataid"</span><span class="p">:</span><span class="w"> </span><span class="mi">201810130601</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"色々詰め込み過ぎた</span><span class="se">\n</span><span class="s2">今は反省している"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">11000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tickets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"formation"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"numbersets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1-2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2t"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"numbersets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"numbersets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1-2-3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3t"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"formation"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"numbersets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12-12-3456"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">10700</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"124"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"125"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"126"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"213"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"214"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"215"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"216"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>指定した<code>dataid</code>のレースに対して予想を投稿します</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://v2.mizuhanome.net/api/v1/forecasts/:dataid</code></p>
+<h3 id='json'>送信するJSONの書式</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>note</td>
+<td>&#39;&#39;</td>
+<td>String</td>
+<td>予想に対する備考です。65535文字まで入力できます</td>
+</tr>
+<tr>
+<td>price</td>
+<td>0</td>
+<td>Number</td>
+<td>予想の販売価格（ポイント）です。0の場合は即座に公開します。</td>
+</tr>
+<tr>
+<td>tickets</td>
+<td>required</td>
+<td>Array</td>
+<td>１以上の券情報です</td>
+</tr>
+<tr>
+<td>tickets[].type</td>
+<td>3t</td>
+<td>3t,3f,2t,2f</td>
+<td>券種を指定します</td>
+</tr>
+<tr>
+<td>tickets[].mode</td>
+<td>single</td>
+<td>single,box,formation</td>
+<td>券の買い方を指定します</td>
+</tr>
+<tr>
+<td>tickets[].numbers</td>
+<td>required</td>
+<td>Array</td>
+<td>１以上の組番情報です</td>
+</tr>
+<tr>
+<td>tickets[].numbers[].numberset</td>
+<td>required</td>
+<td>String(3)</td>
+<td>組番を指定します</td>
+</tr>
+<tr>
+<td>tickets[].numbers[].bet</td>
+<td>100</td>
+<td>Number</td>
+<td>組番に対する賭け金（円）です</td>
+</tr>
+</tbody></table>
+<h3 id='json-2'>返ってくるJSONのキーの意味</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>予想データのidです、予想ページのurlに使用します</td>
+</tr>
+<tr>
+<td>dataid</td>
+<td>Number</td>
+<td>レースidです、レースページのurlに使用します</td>
+</tr>
+<tr>
+<td>bet</td>
+<td>Number</td>
+<td>予想の総賭け金です</td>
+</tr>
+<tr>
+<td>tickets[].bet</td>
+<td>Number</td>
+<td>券の合計賭け金です</td>
+</tr>
+<tr>
+<td>tickets[].numbersets</td>
+<td>Number</td>
+<td>券の組番の概略です</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+  このAPIを使用するには前述のAPIキーセッションが必要です
+</aside>
+<!-- # エラー
+
+<aside class="notice">
+This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+</aside>
+
+The Kittn API uses the following error codes:
+
+Error Code | Meaning
+---------- | -------
+400 | Bad Request -- Your request is invalid.
+401 | Unauthorized -- Your API key is wrong.
+403 | Forbidden -- The kitten requested is hidden for administrators only.
+404 | Not Found -- The specified kitten could not be found.
+405 | Method Not Allowed -- You tried to access a kitten with an invalid method.
+406 | Not Acceptable -- You requested a format that isn't json.
+410 | Gone -- The kitten requested has been removed from our servers.
+418 | I'm a teapot.
+429 | Too Many Requests -- You're requesting too many kittens! Slow down!
+500 | Internal Server Error -- We had a problem with our server. Try again later.
+503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
+ -->
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
