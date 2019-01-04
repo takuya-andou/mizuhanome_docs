@@ -377,7 +377,8 @@ curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/authenticate?ema
 <p>また、以下のように複数の券を購入したり、一部の組番だけ賭け金を変更したい場合は、以下のようにデータを追記します：</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"色々詰め込み過ぎた</span><span class="se">\n</span><span class="s2">今は反省している"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"テスト予想"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1はモーターを交換した</span><span class="se">\n</span><span class="s2">2はA1で手堅い"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"tickets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -440,7 +441,7 @@ curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/authenticate?ema
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/forecasts/201810130601?session=</span><span class="nv">$session</span><span class="s2">"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
-  -d <span class="s1">'{"note":"色々詰め込み過ぎた\n今は反省している","price":1,"tickets":[{"mode":"formation","type":"2f","numbers":[{"numberset":"12"}]},{"mode":"box","type":"2t","numbers":[{"numberset":"123"}]},{"type":"3f","numbers":[{"numberset":"123"}]},{"mode":"formation","numbers":[{"numberset":"123"},{"numberset":"124"},{"numberset":"125"},{"numberset":"126"},{"numberset":"213","bet":10000},{"numberset":"214"},{"numberset":"215"},{"numberset":"216"}]}]}'</span>
+  -d <span class="s1">'{"headline":"テスト予想","note":"1はモーターを交換した\n2はA1で手堅い","price":1,"tickets":[{"mode":"formation","type":"2f","numbers":[{"numberset":"12"}]},{"mode":"box","type":"2t","numbers":[{"numberset":"123"}]},{"type":"3f","numbers":[{"numberset":"123"}]},{"mode":"formation","numbers":[{"numberset":"123"},{"numberset":"124"},{"numberset":"125"},{"numberset":"126"},{"numberset":"213","bet":10000},{"numberset":"214"},{"numberset":"215"},{"numberset":"216"}]}]}'</span>
 </code></pre>
 <blockquote>
 <p>投稿成功時、以下のようなJSONが帰ります:</p>
@@ -451,7 +452,8 @@ curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/authenticate?ema
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
     </span><span class="s2">"dataid"</span><span class="p">:</span><span class="w"> </span><span class="mi">201810130601</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"色々詰め込み過ぎた</span><span class="se">\n</span><span class="s2">今は反省している"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"テスト予想"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1はモーターを交換した</span><span class="se">\n</span><span class="s2">2はA1で手堅い"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"bet"</span><span class="p">:</span><span class="w"> </span><span class="mi">11000</span><span class="p">,</span><span class="w">
     </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"tickets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -548,10 +550,16 @@ curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/authenticate?ema
 </tr>
 </thead><tbody>
 <tr>
+<td>headline</td>
+<td>null</td>
+<td>String</td>
+<td>予想の見出しです。常に公開されます。100文字まで入力できます</td>
+</tr>
+<tr>
 <td>note</td>
 <td>&#39;&#39;</td>
 <td>String</td>
-<td>予想に対する備考です。65535文字まで入力できます</td>
+<td>予想に対する考察です。販売時には非公開になります。65535文字まで入力できます</td>
 </tr>
 <tr>
 <td>price</td>
@@ -595,6 +603,12 @@ curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/authenticate?ema
 <td>Number</td>
 <td>組番に対する賭け金（円）です</td>
 </tr>
+<tr>
+<td>autobuy</td>
+<td>null</td>
+<td>Boolean</td>
+<td><code>true</code>を設定すると、同時に<a href="https://v2.mizuhanome.net/mypage/auto-setting">舟券購入</a>も行います。<a href="https://v2.mizuhanome.net/mypage/memberships">月額会員</a>である必要があります</td>
+</tr>
 </tbody></table>
 <h3 id='json-2'>返ってくるJSONのキーの意味</h3>
 <table><thead>
@@ -628,6 +642,11 @@ curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/authenticate?ema
 <td>tickets[].numbersets</td>
 <td>Number</td>
 <td>券の組番の概略です</td>
+</tr>
+<tr>
+<td>autobuy</td>
+<td>Object</td>
+<td><code>autobuy</code>を<code>true</code>に設定したときだけ、舟券購入の結果が返ります</td>
 </tr>
 </tbody></table>
 
