@@ -240,6 +240,29 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#e4af86f316" class="toc-h1 toc-link" data-title="データ提供">データ提供</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#9e076156bc" class="toc-h2 toc-link" data-title="出走表">出走表</a>
+                  </li>
+                  <li>
+                    <a href="#20c9951076" class="toc-h2 toc-link" data-title="直前情報">直前情報</a>
+                  </li>
+                  <li>
+                    <a href="#754b50acf5" class="toc-h2 toc-link" data-title="オッズ">オッズ</a>
+                  </li>
+                  <li>
+                    <a href="#16ddeece4c" class="toc-h2 toc-link" data-title="コンピューター予想">コンピューター予想</a>
+                  </li>
+                  <li>
+                    <a href="#a77c4c0857" class="toc-h2 toc-link" data-title="結果">結果</a>
+                  </li>
+                  <li>
+                    <a href="#cecb4aa39f" class="toc-h2 toc-link" data-title="返されるデータの詳細">返されるデータの詳細</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://v2.mizuhanome.net/mypage/keys'>APIキーの作成</a></li>
@@ -653,6 +676,744 @@ curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/authenticate?ema
 <aside class="success">
   このAPIを使用するには前述のAPIキーセッションが必要です
 </aside>
+<h1 id='e4af86f316'>データ提供</h1>
+<p><a href="https://v2.mizuhanome.net/mypage/memberships">月額会員のユーザーさま</a>限定で、みずはのめで使用しているデータの提供を行っています。
+それぞれのデータは<a href="https://v2.mizuhanome.net/races?hd=20150101">2015年1月1日</a>〜<a href="https://v2.mizuhanome.net/races">当日</a>まで</p>
+
+<ul>
+<li> レース単体のJSON <code>/:dataid</code></li>
+<li> 月ごとのCSV <code>/:year/:month</code></li>
+</ul>
+
+<p>の形式で利用が可能です。</p>
+
+<aside class="success">
+  このAPIを使用するには前述のAPIキーセッションが必要です
+</aside>
+<h2 id='9e076156bc'>出走表</h2>
+<p><a href="https://v2.mizuhanome.net/races/201501010601/info/card">レース＞レース情報＞出走表</a>で使用しているデータを返します。</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/racecard/201501010601?session=</span><span class="nv">$session</span><span class="s2">"</span>
+<span class="c"># or ...</span>
+curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/racecard/2015/01?session=</span><span class="nv">$session</span><span class="s2">"</span>
+</code></pre><h3 id='http-request-3'>HTTP Request</h3>
+<ul>
+<li><code>GET https://v2.mizuhanome.net/api/v1/data/racecard/:dataid</code></li>
+<li><code>GET https://v2.mizuhanome.net/api/v1/data/racecard/:year/:month</code></li>
+</ul>
+<h2 id='20c9951076'>直前情報</h2>
+<p><a href="https://v2.mizuhanome.net/races/201501010601/info/beforeinfo">レース＞レース情報＞直前情報</a>で使用しているデータを返します。</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/beforeinfo/201501010601?session=</span><span class="nv">$session</span><span class="s2">"</span>
+<span class="c"># or ...</span>
+curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/beforeinfo/2015/01?session=</span><span class="nv">$session</span><span class="s2">"</span>
+</code></pre><h3 id='http-request-4'>HTTP Request</h3>
+<ul>
+<li><code>GET https://v2.mizuhanome.net/api/v1/data/beforeinfo/:dataid</code></li>
+<li><code>GET https://v2.mizuhanome.net/api/v1/data/beforeinfo/:year/:month</code></li>
+</ul>
+<h2 id='754b50acf5'>オッズ</h2>
+<p><a href="https://v2.mizuhanome.net/races/201703080501/odds/3t">レース＞オッズ</a>で使用しているデータを返します。</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/odds/201703080501?session=</span><span class="nv">$session</span><span class="s2">"</span>
+<span class="c"># or ...</span>
+curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/odds/2017/03?session=</span><span class="nv">$session</span><span class="s2">"</span>
+</code></pre><h3 id='http-request-5'>HTTP Request</h3>
+<ul>
+<li><code>GET https://v2.mizuhanome.net/api/v1/data/odds/:dataid</code></li>
+<li><code>GET https://v2.mizuhanome.net/api/v1/data/odds/:year/:month</code></li>
+</ul>
+
+<aside class="notice">
+オッズは<a href="https://v2.mizuhanome.net/races?hd=20170308">2017年03月08日ごろから一部レース場を除いて利用可能になります</a>（それ以前は公式にデータが存在しません）
+</aside>
+<h2 id='16ddeece4c'>コンピューター予想</h2>
+<p>公式の<a href="https://www.boatrace.jp/owpc/pc/race/pcexpect?rno=1&jcd=02&hd=20170309">コンピューター予想</a>のデータを返します。</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/computer_forecast/201703090201?session=</span><span class="nv">$session</span><span class="s2">"</span>
+<span class="c"># or ...</span>
+curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/computer_forecast/2017/03?session=</span><span class="nv">$session</span><span class="s2">"</span>
+</code></pre><h3 id='http-request-6'>HTTP Request</h3>
+<ul>
+<li><code>GET https://v2.mizuhanome.net/api/v1/data/computer_forecast/:dataid</code></li>
+<li><code>GET https://v2.mizuhanome.net/api/v1/data/computer_forecast/:year/:month</code></li>
+</ul>
+
+<aside class="notice">
+コンピューター予想は<a href="https://v2.mizuhanome.net/races?hd=20170309">2017年03月09日ごろから利用可能になります</a>（それ以前は公式にデータが存在しません）
+</aside>
+<h2 id='a77c4c0857'>結果</h2>
+<p><a href="https://v2.mizuhanome.net/races/201501010601/result/pays">レース＞結果</a>で使用しているデータを返します。</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/raceresult/201501010601?session=</span><span class="nv">$session</span><span class="s2">"</span>
+<span class="c"># or ...</span>
+curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/raceresult/2015/01?session=</span><span class="nv">$session</span><span class="s2">"</span>
+</code></pre><h3 id='http-request-7'>HTTP Request</h3>
+<ul>
+<li><code>GET https://v2.mizuhanome.net/api/v1/data/raceresult/:dataid</code></li>
+<li><code>GET https://v2.mizuhanome.net/api/v1/data/raceresult/:year/:month</code></li>
+</ul>
+<h2 id='cecb4aa39f'>返されるデータの詳細</h2><h3 id='9e076156bc-2'>出走表</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/racecard/201501010601?session=</span><span class="nv">$session</span><span class="s2">"</span>
+<span class="c"># {</span>
+<span class="c">#   "body": {</span>
+<span class="c">#     "dataid": 201501010601,</span>
+<span class="c">#     "hd": "2015-01-01",</span>
+<span class="c">#     "jcd": 6,</span>
+<span class="c">#     "rno": 1,</span>
+<span class="c">#     "nj": "２日目",</span>
+<span class="c">#     "kfrom": "2014-12-31",</span>
+<span class="c">#     "kto": "2015-01-06",</span>
+<span class="c">#     "jname": "浜名湖",</span>
+<span class="c">#     "tbgradename": null,</span>
+<span class="c">#     "ktitle": "静岡新聞社・静岡放送　Ｎｅｗ　Ｙｅａｒ’ｓ　Ｃｕｐ",</span>
+<span class="c">#     "nightflag": 0,</span>
+<span class="c">#     "gradeicon": "is-regular",</span>
+<span class="c">#     "rtitle": "予　選",</span>
+<span class="c">#     "koteiflag": 0,</span>
+<span class="c">#     "distance": 1800,</span>
+<span class="c">#     "anteibanflag": 2,</span>
+<span class="c">#     "deadline": "10:41:00",</span>
+<span class="c">#     "deadlinegai": "10:41:00",</span>
+<span class="c">#     "deadlinechangekbn": "0",</span>
+<span class="c">#     "player1_racerno": "4033",</span>
+<span class="c">#     "player1_racername": "伊藤　　将吉",</span>
+<span class="c">#     "player1_absentflag": 0,</span>
+<span class="c">#     "player1_shibu": "静岡",</span>
+<span class="c">#     "player1_birthplace": "静岡",</span>
+<span class="c">#     "player1_age": "36",</span>
+<span class="c">#     "player1_weight": "50.1",</span>
+<span class="c">#     "player1_classname": "A1",</span>
+<span class="c">#     "player1_ftimes": "F0",</span>
+<span class="c">#     "player1_ltimes": "L0",</span>
+<span class="c">#     "player1_zwinper": "6.32",</span>
+<span class="c">#     "player1_ztop2per": "49.60",</span>
+<span class="c">#     "player1_ztop3per": "65.60",</span>
+<span class="c">#     "player1_jwinper": "6.24",</span>
+<span class="c">#     "player1_jtop2per": "50.80",</span>
+<span class="c">#     "player1_jtop3per": "62.90",</span>
+<span class="c">#     "player1_motorno": "31",</span>
+<span class="c">#     "player1_motor2per": "42.00",</span>
+<span class="c">#     "player1_motor3per": "-",</span>
+<span class="c">#     "player1_boatno": "31",</span>
+<span class="c">#     "player1_boat2per": "35.90",</span>
+<span class="c">#     "player1_boat3per": "-",</span>
+<span class="c">#     "player1_hayami": "9",</span>
+<span class="c">#     "player1_avest": "0.14",</span>
+<span class="c">#...</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>フィールド名</th>
+<th>説明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dataid</td>
+<td>データID。キー。年(4桁)+月(2桁)+日(2桁)+場所(2桁)+R(2桁)。</td>
+</tr>
+<tr>
+<td>hd</td>
+<td>日付。年(4桁)-月(2桁)-日(2桁)。</td>
+</tr>
+<tr>
+<td>jcd</td>
+<td>場所番号。1から24</td>
+</tr>
+<tr>
+<td>rno</td>
+<td>R番号。1から12。</td>
+</tr>
+<tr>
+<td>nj</td>
+<td>節の何日目か</td>
+</tr>
+<tr>
+<td>kfrom</td>
+<td>節の開始日</td>
+</tr>
+<tr>
+<td>kto</td>
+<td>節の予定終了日</td>
+</tr>
+<tr>
+<td>jname</td>
+<td>場所の名前</td>
+</tr>
+<tr>
+<td>tbgradename</td>
+<td>その大会のグレード。G1やG2など。2017年1月ごろから利用可能です</td>
+</tr>
+<tr>
+<td>ktitle</td>
+<td>大会名</td>
+</tr>
+<tr>
+<td>nightflag</td>
+<td>ナイターレースフラグ</td>
+</tr>
+<tr>
+<td>gradeicon</td>
+<td>レースグレード</td>
+</tr>
+<tr>
+<td>rtitle</td>
+<td>レースタイトル</td>
+</tr>
+<tr>
+<td>koteiflag</td>
+<td>侵入固定フラグ</td>
+</tr>
+<tr>
+<td>distance</td>
+<td>レース距離</td>
+</tr>
+<tr>
+<td>anteibanflag</td>
+<td>安定板フラグ</td>
+</tr>
+<tr>
+<td>deadline</td>
+<td>締切時刻</td>
+</tr>
+<tr>
+<td>deadlinegai</td>
+<td>場外締切時刻</td>
+</tr>
+<tr>
+<td>deadlinechangekbn</td>
+<td>締切時刻変更区分</td>
+</tr>
+<tr>
+<td>player1_racerno</td>
+<td>レーサー番号</td>
+</tr>
+<tr>
+<td>player1_racername</td>
+<td>レーサー名前</td>
+</tr>
+<tr>
+<td>player1_absentflag</td>
+<td>出走するかどうかのフラグ。1なら出走しない。例→201812141408</td>
+</tr>
+<tr>
+<td>player1_shibu</td>
+<td>支部</td>
+</tr>
+<tr>
+<td>player1_birthplace</td>
+<td>出身</td>
+</tr>
+<tr>
+<td>player1_age</td>
+<td>年齢</td>
+</tr>
+<tr>
+<td>player1_weight</td>
+<td>体重</td>
+</tr>
+<tr>
+<td>player1_classname</td>
+<td>クラス</td>
+</tr>
+<tr>
+<td>player1_ftimes</td>
+<td>フライング回数</td>
+</tr>
+<tr>
+<td>player1_ltimes</td>
+<td>出遅れ回数</td>
+</tr>
+<tr>
+<td>player1_zwinper</td>
+<td>全国勝率</td>
+</tr>
+<tr>
+<td>player1_ztop2per</td>
+<td>全国2連率</td>
+</tr>
+<tr>
+<td>player1_ztop3per</td>
+<td>全国3連率</td>
+</tr>
+<tr>
+<td>player1_jwinper</td>
+<td>当地勝率</td>
+</tr>
+<tr>
+<td>player1_jtop2per</td>
+<td>当地2連率</td>
+</tr>
+<tr>
+<td>player1_jtop3per</td>
+<td>当地3連率</td>
+</tr>
+<tr>
+<td>player1_motorno</td>
+<td>モーター番号</td>
+</tr>
+<tr>
+<td>player1_motor2per</td>
+<td>モーター2連率</td>
+</tr>
+<tr>
+<td>player1_motor3per</td>
+<td>モーター3連率</td>
+</tr>
+<tr>
+<td>player1_boatno</td>
+<td>ボート番号</td>
+</tr>
+<tr>
+<td>player1_boat2per</td>
+<td>ボート2連率</td>
+</tr>
+<tr>
+<td>player1_boat3per</td>
+<td>ボート3連率</td>
+</tr>
+<tr>
+<td>player1_hayami</td>
+<td>早見</td>
+</tr>
+<tr>
+<td>player1_avest</td>
+<td>平均スタートタイミング</td>
+</tr>
+<tr>
+<td>player2_*</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>player3_*</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>player4_*</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>player5_*</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>player6_*</td>
+<td>同上</td>
+</tr>
+</tbody></table>
+<h3 id='20c9951076-2'>直前情報</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/beforeinfo/201501010601?session=</span><span class="nv">$session</span><span class="s2">"</span>
+<span class="c"># {</span>
+<span class="c">#   "status": "200",</span>
+<span class="c">#   "body": {</span>
+<span class="c">#     "dataid": 201501010601,</span>
+<span class="c">#     "player1_adjweight": "0.0",</span>
+<span class="c">#     "player1_tilt": "-0.5",</span>
+<span class="c">#     "player1_extime": "6.79",</span>
+<span class="c">#     "player1_chpartinfolist": "[]",</span>
+<span class="c">#     "player1_lastresult_rno": 0,</span>
+<span class="c">#     "player1_lastresult_teino": 0,</span>
+<span class="c">#     "player1_lastresult_cs": null,</span>
+<span class="c">#     "player1_lastresult_st": null,</span>
+<span class="c">#     "player1_lastresult_chk": null,</span>
+<span class="c">#     "player1_sttenjiinfolist_cs": 1,</span>
+<span class="c">#     "player1_sttenjiinfolist_st": "F.02",</span>
+<span class="c"># ...    </span>
+<span class="c">#     "measuretime": "10:00現在",</span>
+<span class="c">#     "weather": "晴",</span>
+<span class="c">#     "wave": "3cm",</span>
+<span class="c">#     "wind": "4m",</span>
+<span class="c">#     "temp": "5.0℃",</span>
+<span class="c">#     "water": "8.0℃",</span>
+<span class="c">#     "winddirec": "03"</span>
+<span class="c">#   }</span>
+<span class="c"># }</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>name</th>
+<th>description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dataid</td>
+<td>データID。キー。年(4桁)+月(2桁)+日(2桁)+場所(2桁)+R(2桁)。</td>
+</tr>
+<tr>
+<td>player1_adjweight</td>
+<td>調整重量。体重が最低体重以下だと、ハンデとしておもりを持つ。その重量。</td>
+</tr>
+<tr>
+<td>player1_tilt</td>
+<td>チルト角度</td>
+</tr>
+<tr>
+<td>player1_extime</td>
+<td>展示タイム</td>
+</tr>
+<tr>
+<td>player1_chpartinfolist</td>
+<td>パーツ交換の有無。[]だとパーツ交換なし。それ以外だとパーツ交換あり。(内容は不明</td>
+</tr>
+<tr>
+<td>player1_lastresult_rno</td>
+<td>当日前レースのR番号。0は当日の前レースなし。</td>
+</tr>
+<tr>
+<td>player1_lastresult_teino</td>
+<td>当日前レースの艇番号。0は当日の前レースなし。</td>
+</tr>
+<tr>
+<td>player1_lastresult_cs</td>
+<td>当日前レースの枠番号。NAは当日の前レースなし。</td>
+</tr>
+<tr>
+<td>player1_lastresult_st</td>
+<td>当日前レースのスタートタイミング。NAは当日の前レースなし。</td>
+</tr>
+<tr>
+<td>player1_lastresult_chk</td>
+<td>当日前レースの着順。NAは当日の前レースなし。</td>
+</tr>
+<tr>
+<td>player1_sttenjiinfolist_cs</td>
+<td>スタート展示の枠番号</td>
+</tr>
+<tr>
+<td>player1_sttenjiinfolist_st</td>
+<td>スタート展示のスタートタイミング</td>
+</tr>
+<tr>
+<td>player2_*</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>player3_*</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>player4_*</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>player5_*</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>player6_*</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>measuretime</td>
+<td>いつ時点のデータか</td>
+</tr>
+<tr>
+<td>weather</td>
+<td>天気</td>
+</tr>
+<tr>
+<td>wave</td>
+<td>波の高さ</td>
+</tr>
+<tr>
+<td>wind</td>
+<td>風速</td>
+</tr>
+<tr>
+<td>temp</td>
+<td>気温</td>
+</tr>
+<tr>
+<td>water</td>
+<td>水温</td>
+</tr>
+<tr>
+<td>winddirec</td>
+<td>風向。00~16まで17パターン</td>
+</tr>
+</tbody></table>
+<h3 id='754b50acf5-2'>オッズ</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/odds/201703080501?session=</span><span class="nv">$session</span><span class="s2">"</span>
+<span class="c"># {</span>
+<span class="c">#   "status": "200",</span>
+<span class="c">#   "body": {</span>
+<span class="c">#     "dataid": 201703080501,</span>
+<span class="c">#     "updatetime": "21:34:00",</span>
+<span class="c">#     "finalodds": 1,</span>
+<span class="c">#     "odds_3t123": "18.1",</span>
+<span class="c">#     "odds_3t124": "14.3",</span>
+<span class="c">#     "odds_3t125": "88.1",</span>
+<span class="c">#     "odds_3t126": "14.1",</span>
+<span class="c">#     "odds_3t132": "23.1",</span>
+<span class="c">#     "odds_3t134": "18.0",</span>
+<span class="c">#     "odds_3t135": "101.9",</span>
+<span class="c">#     "odds_3t136": "17.2",</span>
+<span class="c">#     ...</span>
+<span class="c">#   }</span>
+<span class="c"># }</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>name</th>
+<th>description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dataid</td>
+<td>データID。キー。年(4桁)+月(2桁)+日(2桁)+場所(2桁)+R(2桁)。</td>
+</tr>
+<tr>
+<td>updatetime</td>
+<td>更新時間。</td>
+</tr>
+<tr>
+<td>finalodds</td>
+<td>ファイナルオッズフラグ。</td>
+</tr>
+<tr>
+<td>odds_3t123</td>
+<td>それぞれのオッズが入ります（後略）</td>
+</tr>
+</tbody></table>
+<h3 id='16ddeece4c-2'>コンピューター予想</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/computer_forecast/201703090201?session=</span><span class="nv">$session</span><span class="s2">"</span>
+<span class="c"># {</span>
+<span class="c">#   "status": "200",</span>
+<span class="c">#   "body": {</span>
+<span class="c">#     "dataid": 201703090201,</span>
+<span class="c">#     "player1_mark": "○",</span>
+<span class="c">#     "player2_mark": "◎",</span>
+<span class="c">#     "player3_mark": "△",</span>
+<span class="c">#     "player4_mark": null,</span>
+<span class="c">#     "player5_mark": "×",</span>
+<span class="c">#     "player6_mark": null,</span>
+<span class="c">#     "jisin": "★★",</span>
+<span class="c">#     "courslist1": "1",</span>
+<span class="c">#     "courslist2": "2",</span>
+<span class="c">#     "courslist3": "3",</span>
+<span class="c">#     "courslist4": "4",</span>
+<span class="c">#     "courslist5": "5",</span>
+<span class="c">#     "courslist6": "6",</span>
+<span class="c">#     "focus3rtlist1": "2=1-3",</span>
+<span class="c">#     "focus3rtlist2": "2=3-1",</span>
+<span class="c">#     "focus3rtlist3": "2=1-5",</span>
+<span class="c">#     "focus3rtlist4": "2=3-5",</span>
+<span class="c">#     "focus3rtlist5": "2-5-1",</span>
+<span class="c">#     "focus3rtlist6": "2-5-3",</span>
+<span class="c">#     "focus2rtlist1": "2=1",</span>
+<span class="c">#     "focus2rtlist2": "2=3",</span>
+<span class="c">#     "focus2rtlist3": "2-5",</span>
+<span class="c">#     "focus2rtlist4": "1-3"</span>
+<span class="c">#   }</span>
+<span class="c"># }</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>name</th>
+<th>description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dataid</td>
+<td>データID。キー。年(4桁)+月(2桁)+日(2桁)+場所(2桁)+R(2桁)。</td>
+</tr>
+<tr>
+<td>player1_mark</td>
+<td>◎や○等のマーク</td>
+</tr>
+<tr>
+<td>jisin</td>
+<td>「★★★」のような自信度数</td>
+</tr>
+<tr>
+<td>courslist1</td>
+<td>進入予想</td>
+</tr>
+<tr>
+<td>courslist2</td>
+<td></td>
+</tr>
+<tr>
+<td>courslist3</td>
+<td></td>
+</tr>
+<tr>
+<td>courslist4</td>
+<td></td>
+</tr>
+<tr>
+<td>courslist5</td>
+<td></td>
+</tr>
+<tr>
+<td>courslist6</td>
+<td></td>
+</tr>
+<tr>
+<td>focus3rtlist1</td>
+<td>3連の予想。例： 1=2-3</td>
+</tr>
+<tr>
+<td>focus3rtlist2</td>
+<td></td>
+</tr>
+<tr>
+<td>focus3rtlist3</td>
+<td></td>
+</tr>
+<tr>
+<td>focus3rtlist4</td>
+<td></td>
+</tr>
+<tr>
+<td>focus3rtlist5</td>
+<td></td>
+</tr>
+<tr>
+<td>focus3rtlist6</td>
+<td></td>
+</tr>
+<tr>
+<td>focus2rtlist1</td>
+<td>2連の予想。例： 1=2</td>
+</tr>
+<tr>
+<td>focus2rtlist2</td>
+<td></td>
+</tr>
+<tr>
+<td>focus2rtlist3</td>
+<td></td>
+</tr>
+<tr>
+<td>focus2rtlist4</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='a77c4c0857-2'>結果</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/raceresult/201501010601?session=</span><span class="nv">$session</span><span class="s2">"</span>
+<span class="c"># {</span>
+<span class="c">#   "status": "200",</span>
+<span class="c">#   "body": {</span>
+<span class="c">#     "dataid": 201501010601,</span>
+<span class="c">#     "player1_chk": "１",</span>
+<span class="c">#     "player1_racetime": "1'49\"7",</span>
+<span class="c">#     "player1_cs": 1,</span>
+<span class="c">#     "player1_wintech": "逃げ",</span>
+<span class="c">#     ...</span>
+<span class="c">#     "northdirec": "13",</span>
+<span class="c">#     "weather": "晴",</span>
+<span class="c">#     "wave": "2cm",</span>
+<span class="c">#     "winddirec": "01",</span>
+<span class="c">#     "wind": "01",</span>
+<span class="c">#     "temp": "6.0℃",</span>
+<span class="c">#     "water": "8.0℃",</span>
+<span class="c">#     "returnlist": "[]",</span>
+<span class="c">#     "remarklist": "[]",</span>
+<span class="c">#     "odds_3t123": null,</span>
+<span class="c">#     "odds_3t124": null,</span>
+<span class="c">#     "odds_3t125": null,</span>
+<span class="c">#     "odds_3t126": null,</span>
+<span class="c">#     "odds_3t132": null,</span>
+<span class="c">#     "odds_3t134": null,</span>
+<span class="c">#     "odds_3t135": null,</span>
+<span class="c">#     "odds_3t136": null,</span>
+<span class="c">#     "odds_3t142": "1770",</span>
+<span class="c">#     ...</span>
+<span class="c">#     "pop_3t123": null,</span>
+<span class="c">#     "pop_3t124": null,</span>
+<span class="c">#     "pop_3t125": null,</span>
+<span class="c">#     "pop_3t126": null,</span>
+<span class="c">#     "pop_3t132": null,</span>
+<span class="c">#     "pop_3t134": null,</span>
+<span class="c">#     "pop_3t135": null,</span>
+<span class="c">#     "pop_3t136": null,</span>
+<span class="c">#     "pop_3t142": "7",</span>
+<span class="c">#     ...</span>
+<span class="c">#   }</span>
+<span class="c"># }</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>name</th>
+<th>description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dataid</td>
+<td>データID。キー。年(4桁)+月(2桁)+日(2桁)+場所(2桁)+R(2桁)。</td>
+</tr>
+<tr>
+<td>player1_chk</td>
+<td>着順</td>
+</tr>
+<tr>
+<td>player1_racetime</td>
+<td>タイム</td>
+</tr>
+<tr>
+<td>player1_cs</td>
+<td>枠番号</td>
+</tr>
+<tr>
+<td>player1_wintech</td>
+<td>決まりて</td>
+</tr>
+<tr>
+<td>player2_*</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>player3_*</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>player4_*</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>player5_*</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>player6_*</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>northdirec</td>
+<td>北の方向、01~16の16パターン</td>
+</tr>
+<tr>
+<td>weather</td>
+<td>天気</td>
+</tr>
+<tr>
+<td>wave</td>
+<td>波の高さ</td>
+</tr>
+<tr>
+<td>winddirec</td>
+<td>風向。00~16まで17パターン。</td>
+</tr>
+<tr>
+<td>wind</td>
+<td>風速</td>
+</tr>
+<tr>
+<td>temp</td>
+<td>気温</td>
+</tr>
+<tr>
+<td>water</td>
+<td>水温</td>
+</tr>
+<tr>
+<td>returnlist</td>
+<td>返還艇リスト</td>
+</tr>
+<tr>
+<td>remarklist</td>
+<td>[], [同着あり], [返還艇あり]の3パターン</td>
+</tr>
+<tr>
+<td>odds_3t123</td>
+<td>それぞれのオッズが入ります（後略）</td>
+</tr>
+<tr>
+<td>pop_3t123</td>
+<td>それぞれの人気が入ります（後略）</td>
+</tr>
+</tbody></table>
 <!-- # エラー
 
 <aside class="notice">
