@@ -241,6 +241,14 @@
               </ul>
           </li>
           <li>
+            <a href="#4971c80985" class="toc-h1 toc-link" data-title="舟券購入">舟券購入</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#2889ed7ce2" class="toc-h2 toc-link" data-title="キュー送信">キュー送信</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#e4af86f316" class="toc-h1 toc-link" data-title="データ提供">データ提供</a>
               <ul class="toc-list-h2">
                   <li>
@@ -606,7 +614,7 @@ curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/authenticate?ema
 <td>tickets[].mode</td>
 <td>single</td>
 <td>single,box,formation</td>
-<td>券の買い方を指定します</td>
+<td>券の買い方を指定します（省略時は「通常」と表示されます）</td>
 </tr>
 <tr>
 <td>tickets[].numbers</td>
@@ -631,6 +639,12 @@ curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/authenticate?ema
 <td>null</td>
 <td>Boolean</td>
 <td><code>true</code>を設定すると、同時に<a href="https://v2.mizuhanome.net/mypage/auto-setting">舟券購入</a>も行います。<a href="https://v2.mizuhanome.net/mypage/memberships">月額会員</a>である必要があります</td>
+</tr>
+<tr>
+<td>private</td>
+<td>false</td>
+<td>Boolean</td>
+<td><code>true</code>に設定すると、自分以外に閲覧不可能になります。「<a href="https://dev2.mizuhanome.net/forecasts/my">マイページ＞自分の予想</a>」でのみ表示されます</td>
 </tr>
 </tbody></table>
 <h3 id='json-2'>返ってくるJSONのキーの意味</h3>
@@ -676,6 +690,135 @@ curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/authenticate?ema
 <aside class="success">
   このAPIを使用するには前述のAPIキーセッションが必要です
 </aside>
+<h1 id='4971c80985'>舟券購入</h1>
+<p>舟券購入だけを行うことも可能です</p>
+
+<aside class="notice">
+<a href="https://v2.mizuhanome.net/mypage/memberships">月額会員</a>である必要があり、<a href="https://dev2.mizuhanome.net/mypage/auto-setting">舟券購入の設定</a>が事前に必要です。
+</aside>
+<h2 id='2889ed7ce2'>キュー送信</h2><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"tickets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"numberset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>上記のようなPOSTデータが最小の投稿情報です、以下のように送信します：</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/autobuy/201810130601?session=</span><span class="nv">$session</span><span class="s2">"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{"tickets":[{"numbers":[{"numberset":"123"}]}]}'</span>
+</code></pre>
+<blockquote>
+<p>投稿成功時、以下のようなJSONが帰ります:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ご投票ありがとうございました。以下の内容で投票が完了しました。</span><span class="se">\n</span><span class="s2">契約番号 : 0025</span><span class="se">\n</span><span class="s2">成立ベット/申込ベット  1/1</span><span class="se">\n</span><span class="s2">購入成立金額  100円</span><span class="se">\n</span><span class="s2">..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dataid"</span><span class="p">:</span><span class="w"> </span><span class="mi">201810130601</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"queues"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"ticketType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3t"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ticketNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>送信した組番が12点以内の場合、キューは即時実行され、返されるJSONには<code>message</code>を含みます。13点以上の場合、キーは保留になり、<code>message</code>を含みません。</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://v2.mizuhanome.net/api/v1/autobuy/:dataid</code></p>
+<h3 id='json-3'>送信するJSONの書式</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tickets</td>
+<td>required</td>
+<td>Array</td>
+<td>１以上の券情報です</td>
+</tr>
+<tr>
+<td>tickets[].type</td>
+<td>3t</td>
+<td>3t,3f,2t,2f</td>
+<td>券種を指定します</td>
+</tr>
+<tr>
+<td>tickets[].numbers</td>
+<td>required</td>
+<td>Array</td>
+<td>１以上の組番情報です</td>
+</tr>
+<tr>
+<td>tickets[].numbers[].numberset</td>
+<td>required</td>
+<td>String(3)</td>
+<td>組番を指定します</td>
+</tr>
+<tr>
+<td>tickets[].numbers[].bet</td>
+<td>100</td>
+<td>Number</td>
+<td>組番に対する賭け金（円）です</td>
+</tr>
+</tbody></table>
+<h3 id='json-4'>返ってくるJSONのキーの意味</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Number</td>
+<td><code>-1:失敗,0:待機,1:処理中,2:完了</code> キューの状況です、即時実行されなかった場合は0が返ります。</td>
+</tr>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>即時実行時、Web投票公式のメッセージの一部が表示されます。即時実行されなかった場合は存在しません</td>
+</tr>
+<tr>
+<td>dataid</td>
+<td>Number</td>
+<td>対象のレースid</td>
+</tr>
+<tr>
+<td>queues[].ticketType</td>
+<td>String</td>
+<td>券種 <code>3t,3f,2t,2f</code></td>
+</tr>
+<tr>
+<td>queues[].ticketNum</td>
+<td>String</td>
+<td>組番</td>
+</tr>
+<tr>
+<td>queues[].price</td>
+<td>Number</td>
+<td>賭け金</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+  このAPIを使用するには前述のAPIキーセッションが必要です
+</aside>
 <h1 id='e4af86f316'>データ提供</h1>
 <p><a href="https://v2.mizuhanome.net/mypage/memberships">月額会員のユーザーさま</a>限定で、みずはのめで使用しているデータの提供を行っています。
 それぞれのデータは<a href="https://v2.mizuhanome.net/races?hd=20150101">2015年1月1日</a>〜<a href="https://v2.mizuhanome.net/races">当日</a>まで</p>
@@ -695,7 +838,7 @@ curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/authenticate?ema
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/racecard/201501010601?session=</span><span class="nv">$session</span><span class="s2">"</span>
 <span class="c"># or ...</span>
 curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/racecard/2015/01?session=</span><span class="nv">$session</span><span class="s2">"</span>
-</code></pre><h3 id='http-request-3'>HTTP Request</h3>
+</code></pre><h3 id='http-request-4'>HTTP Request</h3>
 <ul>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/racecard/:dataid</code></li>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/racecard/:year/:month</code></li>
@@ -705,7 +848,7 @@ curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/racecard/2015/01?se
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/beforeinfo/201501010601?session=</span><span class="nv">$session</span><span class="s2">"</span>
 <span class="c"># or ...</span>
 curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/beforeinfo/2015/01?session=</span><span class="nv">$session</span><span class="s2">"</span>
-</code></pre><h3 id='http-request-4'>HTTP Request</h3>
+</code></pre><h3 id='http-request-5'>HTTP Request</h3>
 <ul>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/beforeinfo/:dataid</code></li>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/beforeinfo/:year/:month</code></li>
@@ -715,7 +858,7 @@ curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/beforeinfo/2015/01?
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/odds/201703080501?session=</span><span class="nv">$session</span><span class="s2">"</span>
 <span class="c"># or ...</span>
 curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/odds/2017/03?session=</span><span class="nv">$session</span><span class="s2">"</span>
-</code></pre><h3 id='http-request-5'>HTTP Request</h3>
+</code></pre><h3 id='http-request-6'>HTTP Request</h3>
 <ul>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/odds/:dataid</code></li>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/odds/:year/:month</code></li>
@@ -729,7 +872,7 @@ curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/odds/2017/03?sessio
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/computer_forecast/201703090201?session=</span><span class="nv">$session</span><span class="s2">"</span>
 <span class="c"># or ...</span>
 curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/computer_forecast/2017/03?session=</span><span class="nv">$session</span><span class="s2">"</span>
-</code></pre><h3 id='http-request-6'>HTTP Request</h3>
+</code></pre><h3 id='http-request-7'>HTTP Request</h3>
 <ul>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/computer_forecast/:dataid</code></li>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/computer_forecast/:year/:month</code></li>
@@ -743,7 +886,7 @@ curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/computer_forecast/2
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/raceresult/201501010601?session=</span><span class="nv">$session</span><span class="s2">"</span>
 <span class="c"># or ...</span>
 curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/raceresult/2015/01?session=</span><span class="nv">$session</span><span class="s2">"</span>
-</code></pre><h3 id='http-request-7'>HTTP Request</h3>
+</code></pre><h3 id='http-request-8'>HTTP Request</h3>
 <ul>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/raceresult/:dataid</code></li>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/raceresult/:year/:month</code></li>
