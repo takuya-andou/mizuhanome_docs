@@ -843,31 +843,31 @@ curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/authenticate?ema
 <p><a href="https://v2.mizuhanome.net/races/201501010601/info/card">レース＞レース情報＞出走表</a>で使用しているデータを返します。</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/racecard/201501010601?session=</span><span class="nv">$session</span><span class="s2">"</span>
 <span class="c"># or ...</span>
-curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/racecard/2015/01?session=</span><span class="nv">$session</span><span class="s2">"</span>
+curl -L <span class="s2">"https://v2.mizuhanome.net/api/v1/data/racecard/2015/01?session=</span><span class="nv">$session</span><span class="s2">"</span>
 </code></pre><h3 id='http-request-4'>HTTP Request</h3>
 <ul>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/racecard/:dataid</code></li>
-<li><code>GET https://v2.mizuhanome.net/api/v1/data/racecard/:year/:month</code></li>
+<li><code>GET https://v2.mizuhanome.net/api/v1/data/racecard/:year/:month (302)</code></li>
 </ul>
 <h2 id='20c9951076'>直前情報</h2>
 <p><a href="https://v2.mizuhanome.net/races/201501010601/info/beforeinfo">レース＞レース情報＞直前情報</a>で使用しているデータを返します。</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/beforeinfo/201501010601?session=</span><span class="nv">$session</span><span class="s2">"</span>
 <span class="c"># or ...</span>
-curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/beforeinfo/2015/01?session=</span><span class="nv">$session</span><span class="s2">"</span>
+curl -L <span class="s2">"https://v2.mizuhanome.net/api/v1/data/beforeinfo/2015/01?session=</span><span class="nv">$session</span><span class="s2">"</span>
 </code></pre><h3 id='http-request-5'>HTTP Request</h3>
 <ul>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/beforeinfo/:dataid</code></li>
-<li><code>GET https://v2.mizuhanome.net/api/v1/data/beforeinfo/:year/:month</code></li>
+<li><code>GET https://v2.mizuhanome.net/api/v1/data/beforeinfo/:year/:month (302)</code></li>
 </ul>
 <h2 id='754b50acf5'>オッズ</h2>
 <p><a href="https://v2.mizuhanome.net/races/201703080501/odds/3t">レース＞オッズ</a>で使用しているデータを返します。</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/odds/201703080501?session=</span><span class="nv">$session</span><span class="s2">"</span>
 <span class="c"># or ...</span>
-curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/odds/2017/03?session=</span><span class="nv">$session</span><span class="s2">"</span>
+curl -L <span class="s2">"https://v2.mizuhanome.net/api/v1/data/odds/2017/03?session=</span><span class="nv">$session</span><span class="s2">"</span>
 </code></pre><h3 id='http-request-6'>HTTP Request</h3>
 <ul>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/odds/:dataid</code></li>
-<li><code>GET https://v2.mizuhanome.net/api/v1/data/odds/:year/:month</code></li>
+<li><code>GET https://v2.mizuhanome.net/api/v1/data/odds/:year/:month (302)</code></li>
 </ul>
 
 <aside class="notice">
@@ -877,11 +877,11 @@ curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/odds/2017/03?sessio
 <p>公式の<a href="https://www.boatrace.jp/owpc/pc/race/pcexpect?rno=1&jcd=02&hd=20170309">コンピューター予想</a>のデータを返します。</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/computer_forecast/201703090201?session=</span><span class="nv">$session</span><span class="s2">"</span>
 <span class="c"># or ...</span>
-curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/computer_forecast/2017/03?session=</span><span class="nv">$session</span><span class="s2">"</span>
+curl -L <span class="s2">"https://v2.mizuhanome.net/api/v1/data/computer_forecast/2017/03?session=</span><span class="nv">$session</span><span class="s2">"</span>
 </code></pre><h3 id='http-request-7'>HTTP Request</h3>
 <ul>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/computer_forecast/:dataid</code></li>
-<li><code>GET https://v2.mizuhanome.net/api/v1/data/computer_forecast/:year/:month</code></li>
+<li><code>GET https://v2.mizuhanome.net/api/v1/data/computer_forecast/:year/:month (302)</code></li>
 </ul>
 
 <aside class="notice">
@@ -891,11 +891,11 @@ curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/computer_forecast/2
 <p><a href="https://v2.mizuhanome.net/races/201501010601/result/pays">レース＞結果</a>で使用しているデータを返します。</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/raceresult/201501010601?session=</span><span class="nv">$session</span><span class="s2">"</span>
 <span class="c"># or ...</span>
-curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/raceresult/2015/01?session=</span><span class="nv">$session</span><span class="s2">"</span>
+curl -L <span class="s2">"https://v2.mizuhanome.net/api/v1/data/raceresult/2015/01?session=</span><span class="nv">$session</span><span class="s2">"</span>
 </code></pre><h3 id='http-request-8'>HTTP Request</h3>
 <ul>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/raceresult/:dataid</code></li>
-<li><code>GET https://v2.mizuhanome.net/api/v1/data/raceresult/:year/:month</code></li>
+<li><code>GET https://v2.mizuhanome.net/api/v1/data/raceresult/:year/:month (302)</code></li>
 </ul>
 <h2 id='cecb4aa39f'>返されるデータの詳細</h2><h3 id='9e076156bc-2'>出走表</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/racecard/201501010601?session=</span><span class="nv">$session</span><span class="s2">"</span>
 <span class="c"># {</span>
