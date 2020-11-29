@@ -241,6 +241,20 @@
               </ul>
           </li>
           <li>
+            <a href="#31a12b6200" class="toc-h1 toc-link" data-title="前日予想・直前予想">前日予想・直前予想</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#6" class="toc-h2 toc-link" data-title="トップ6（前日予想）">トップ6（前日予想）</a>
+                  </li>
+                  <li>
+                    <a href="#6-2" class="toc-h2 toc-link" data-title="トップ6（直前予想）">トップ6（直前予想）</a>
+                  </li>
+                  <li>
+                    <a href="#ca10dac080" class="toc-h2 toc-link" data-title="全確率（前日予想／直前予想）">全確率（前日予想／直前予想）</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#4971c80985" class="toc-h1 toc-link" data-title="舟券購入">舟券購入</a>
               <ul class="toc-list-h2">
                   <li>
@@ -635,16 +649,10 @@ curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/authenticate?ema
 <td>組番に対する賭け金（円）です</td>
 </tr>
 <tr>
-<td>unlimited</td>
-<td>null</td>
-<td>Boolean</td>
-<td>月額会員がポイントなしで閲覧できる【UL限定】に設定します。閲覧されたものは毎月【UL売り上げ】として売り上げ管理から振込申請することが可能です（銀行振り込み手数料を引いて、残高5,000円以上からとなります）</td>
-</tr>
-<tr>
 <td>autobuy</td>
 <td>null</td>
 <td>Boolean</td>
-<td><code>true</code>を設定すると、同時に<a href="https://v2.mizuhanome.net/mypage/auto-setting">舟券購入</a>も行います。<a href="https://v2.mizuhanome.net/mypage/memberships">月額会員</a>である必要があります</td>
+<td><code>true</code>を設定すると、同時に<a href="https://v2.mizuhanome.net/mypage/auto-setting">舟券購入</a>も行います。<a href="https://v2.mizuhanome.net/mypage/membership">月額会員</a>である必要があります</td>
 </tr>
 <tr>
 <td>private</td>
@@ -696,11 +704,169 @@ curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/authenticate?ema
 <aside class="success">
   このAPIを使用するには前述のAPIキーセッションが必要です
 </aside>
-<h1 id='4971c80985'>舟券購入</h1>
-<p>舟券購入だけを行うことも可能です</p>
+<h1 id='31a12b6200'>前日予想・直前予想</h1><h2 id='6'>トップ6（前日予想）</h2>
+<p><a href="https://v2.mizuhanome.net/races/202001010601/predict/previous">予想＞前日予想</a>で使用している強さ、予想を返します</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/predicts/202001010601/top6/?session=</span><span class="nv">$session</span><span class="s2">"</span>
+</code></pre>
+<blockquote>
+<p>成功時、以下のような書式のデータが帰ります</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dataid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"202001010601"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"player_powers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mf">71.065315</span><span class="p">,</span><span class="w">
+    </span><span class="mf">48.595695</span><span class="p">,</span><span class="w">
+    </span><span class="mf">44.021187</span><span class="p">,</span><span class="w">
+    </span><span class="mf">50.924145</span><span class="p">,</span><span class="w">
+    </span><span class="mf">40.35082</span><span class="p">,</span><span class="w">
+    </span><span class="mf">45.042835</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"top6"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"3t"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"124"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"142"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"146"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"126"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"143"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"3f"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"124"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"146"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"126"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"134"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"136"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"2t"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"13"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"41"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"21"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"2f"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"13"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"24"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"46"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://v2.mizuhanome.net/api/v1/predicts/:dataid/top6</code></p>
+<h2 id='6-2'>トップ6（直前予想）</h2>
+<p><a href="https://v2.mizuhanome.net/races/202001010601/predict/before">予想＞直前予想</a>で使用している強さ、予想を返します。</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/predicts/202001010601/top6/?session=</span><span class="nv">$session</span><span class="s2">&amp;type=2"</span>
+</code></pre>
+<blockquote>
+<p>成功時、以下のような書式のデータが帰ります</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dataid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"202001010601"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"player_powers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mf">71.560234</span><span class="p">,</span><span class="w">
+    </span><span class="mf">47.669903</span><span class="p">,</span><span class="w">
+    </span><span class="mf">44.5857</span><span class="p">,</span><span class="w">
+    </span><span class="mf">49.5206</span><span class="p">,</span><span class="w">
+    </span><span class="mf">40.959846</span><span class="p">,</span><span class="w">
+    </span><span class="mf">45.703712</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"top6"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"3t"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"124"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"142"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"146"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"126"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"134"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"3f"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"124"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"146"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"134"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"126"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"136"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"2t"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"13"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"41"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"21"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"2f"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"13"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"46"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"24"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://v2.mizuhanome.net/api/v1/predicts/:dataid/top6?type=2</code></p>
 
 <aside class="notice">
-<a href="https://v2.mizuhanome.net/mypage/memberships">月額会員</a>である必要があり、<a href="https://dev2.mizuhanome.net/mypage/auto-setting">舟券購入の設定</a>が事前に必要です。
+レース結果が発表されていない場合は、<a href="https://v2.mizuhanome.net/mypage/membership">月額会員</a>であるか、事前にポイントで購入が必要です
+</aside>
+<h2 id='ca10dac080'>全確率（前日予想／直前予想）</h2>
+<p><a href="https://v2.mizuhanome.net/races/202001010601/predict/previous">予想＞前日予想</a>、<a href="https://v2.mizuhanome.net/races/202001010601/predict/before">予想＞直前予想</a>で使用している強さと予想の確率データをすべて返します。</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/predicts/202001010601/top6/?session=</span><span class="nv">$session</span><span class="s2">"</span>
+</code></pre>
+<blockquote>
+<p>成功時、以下のような書式のデータが帰ります</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span>
+  <span class="s2">"predict"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"dataid"</span><span class="p">:</span> <span class="mi">202001010601</span><span class="p">,</span>
+    <span class="s2">"modelid"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">"player1_power"</span><span class="p">:</span> <span class="mf">71.065315</span><span class="p">,</span>
+    <span class="s2">"player2_power"</span><span class="p">:</span> <span class="mf">48.595695</span><span class="p">,</span>
+    <span class="s2">"player3_power"</span><span class="p">:</span> <span class="mf">44.021187</span><span class="p">,</span>
+    <span class="s2">"player4_power"</span><span class="p">:</span> <span class="mf">50.924145</span><span class="p">,</span>
+    <span class="s2">"player5_power"</span><span class="p">:</span> <span class="mf">40.35082</span><span class="p">,</span>
+    <span class="s2">"player6_power"</span><span class="p">:</span> <span class="mf">45.042835</span><span class="p">,</span>
+    <span class="s2">"3t123"</span><span class="p">:</span> <span class="s2">"0.0416401"</span><span class="p">,</span>
+    <span class="c1">// ..</span>
+    <span class="s2">"3f123"</span><span class="p">:</span> <span class="s2">"0.1007453"</span><span class="p">,</span>
+    <span class="c1">// ..</span>
+    <span class="s2">"2t12"</span><span class="p">:</span> <span class="s2">"0.1625650"</span><span class="p">,</span>
+    <span class="c1">// ..</span>
+    <span class="s2">"2f12"</span><span class="p">:</span> <span class="s2">"0.2205821"</span><span class="p">,</span>
+    <span class="c1">// ..</span>
+    <span class="s2">"k12"</span><span class="p">:</span> <span class="s2">"0.4231744"</span><span class="p">,</span>
+    <span class="c1">// ..</span>
+    <span class="s2">"t1"</span><span class="p">:</span> <span class="s2">"0.4846293"</span><span class="p">,</span>
+    <span class="c1">// ..</span>
+    <span class="s2">"f1"</span><span class="p">:</span> <span class="s2">"0.6652319"</span><span class="p">,</span>
+    <span class="c1">// ..</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre><h3 id='http-request-5'>HTTP Request</h3>
+<ul>
+<li>前日予想 <code>GET https://v2.mizuhanome.net/api/v1/predicts/:dataid/</code></li>
+<li>直前予想 <code>GET https://v2.mizuhanome.net/api/v1/predicts/:dataid/?type=2</code></li>
+</ul>
+
+<aside class="notice">
+データ取得には、<a href="https://v2.mizuhanome.net/mypage/membership">月額会員</a>であるか、事前にポイントで購入が必要です
+</aside>
+<h1 id='4971c80985'>舟券購入</h1>
+<p>指定した<code>dataid</code>のレースに対して舟券購入を行います。また、集計のために投票内容は公開されます（非公開に設定可能です）</p>
+
+<aside class="notice">
+<a href="https://v2.mizuhanome.net/mypage/membership">月額会員</a>である必要があり、<a href="https://dev2.mizuhanome.net/mypage/auto-setting">舟券購入の設定</a>が事前に必要です。
 </aside>
 <h2 id='2889ed7ce2'>キュー送信</h2><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"tickets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -740,7 +906,7 @@ curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/authenticate?ema
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>送信した組番が12点以内の場合、キューは即時実行され、返されるJSONには<code>message</code>を含みます。13点以上の場合、キーは保留になり、<code>message</code>を含みません。</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>POST https://v2.mizuhanome.net/api/v1/autobuy/:dataid</code></p>
 <h3 id='json-3'>送信するJSONの書式</h3>
 <table><thead>
@@ -780,6 +946,30 @@ curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/authenticate?ema
 <td>100</td>
 <td>Number</td>
 <td>組番に対する賭け金（円）です</td>
+</tr>
+<tr>
+<td>headline</td>
+<td>null</td>
+<td>String</td>
+<td>【省略可】予想の見出しです。常に公開されます。100文字まで入力できます</td>
+</tr>
+<tr>
+<td>note</td>
+<td>&#39;&#39;</td>
+<td>String</td>
+<td>【省略可】予想に対する考察です。販売時には非公開になります。65535文字まで入力できます</td>
+</tr>
+<tr>
+<td>price</td>
+<td>0</td>
+<td>Number</td>
+<td>【省略可】予想の販売価格（ポイント）です。0の場合は即座に公開します。</td>
+</tr>
+<tr>
+<td>private</td>
+<td>false</td>
+<td>Boolean</td>
+<td>【省略可】 <code>true</code>に設定すると、自分以外に閲覧不可能になります。「<a href="https://dev2.mizuhanome.net/forecasts/my">マイページ＞自分の予想</a>」でのみ表示されます</td>
 </tr>
 </tbody></table>
 <h3 id='json-4'>返ってくるJSONのキーの意味</h3>
@@ -826,7 +1016,7 @@ curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/authenticate?ema
   このAPIを使用するには前述のAPIキーセッションが必要です
 </aside>
 <h1 id='e4af86f316'>データ提供</h1>
-<p><a href="https://v2.mizuhanome.net/mypage/memberships">月額会員のユーザーさま</a>限定で、みずはのめで使用しているデータの提供を行っています。
+<p><a href="https://v2.mizuhanome.net/mypage/membership">月額会員のユーザーさま</a>限定で、みずはのめで使用しているデータの提供を行っています。
 それぞれのデータは<a href="https://v2.mizuhanome.net/races?hd=20150101">2015年1月1日</a>〜<a href="https://v2.mizuhanome.net/races">当日</a>まで</p>
 
 <ul>
@@ -844,7 +1034,7 @@ curl -X POST <span class="s2">"https://v2.mizuhanome.net/api/v1/authenticate?ema
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/racecard/201501010601?session=</span><span class="nv">$session</span><span class="s2">"</span>
 <span class="c"># or ...</span>
 curl -L <span class="s2">"https://v2.mizuhanome.net/api/v1/data/racecard/2015/01?session=</span><span class="nv">$session</span><span class="s2">"</span>
-</code></pre><h3 id='http-request-4'>HTTP Request</h3>
+</code></pre><h3 id='http-request-7'>HTTP Request</h3>
 <ul>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/racecard/:dataid</code></li>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/racecard/:year/:month (302)</code></li>
@@ -854,7 +1044,7 @@ curl -L <span class="s2">"https://v2.mizuhanome.net/api/v1/data/racecard/2015/01
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/beforeinfo/201501010601?session=</span><span class="nv">$session</span><span class="s2">"</span>
 <span class="c"># or ...</span>
 curl -L <span class="s2">"https://v2.mizuhanome.net/api/v1/data/beforeinfo/2015/01?session=</span><span class="nv">$session</span><span class="s2">"</span>
-</code></pre><h3 id='http-request-5'>HTTP Request</h3>
+</code></pre><h3 id='http-request-8'>HTTP Request</h3>
 <ul>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/beforeinfo/:dataid</code></li>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/beforeinfo/:year/:month (302)</code></li>
@@ -864,7 +1054,7 @@ curl -L <span class="s2">"https://v2.mizuhanome.net/api/v1/data/beforeinfo/2015/
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/odds/201703080501?session=</span><span class="nv">$session</span><span class="s2">"</span>
 <span class="c"># or ...</span>
 curl -L <span class="s2">"https://v2.mizuhanome.net/api/v1/data/odds/2017/03?session=</span><span class="nv">$session</span><span class="s2">"</span>
-</code></pre><h3 id='http-request-6'>HTTP Request</h3>
+</code></pre><h3 id='http-request-9'>HTTP Request</h3>
 <ul>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/odds/:dataid</code></li>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/odds/:year/:month (302)</code></li>
@@ -878,7 +1068,7 @@ curl -L <span class="s2">"https://v2.mizuhanome.net/api/v1/data/odds/2017/03?ses
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/computer_forecast/201703090201?session=</span><span class="nv">$session</span><span class="s2">"</span>
 <span class="c"># or ...</span>
 curl -L <span class="s2">"https://v2.mizuhanome.net/api/v1/data/computer_forecast/2017/03?session=</span><span class="nv">$session</span><span class="s2">"</span>
-</code></pre><h3 id='http-request-7'>HTTP Request</h3>
+</code></pre><h3 id='http-request-10'>HTTP Request</h3>
 <ul>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/computer_forecast/:dataid</code></li>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/computer_forecast/:year/:month (302)</code></li>
@@ -892,7 +1082,7 @@ curl -L <span class="s2">"https://v2.mizuhanome.net/api/v1/data/computer_forecas
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/raceresult/201501010601?session=</span><span class="nv">$session</span><span class="s2">"</span>
 <span class="c"># or ...</span>
 curl -L <span class="s2">"https://v2.mizuhanome.net/api/v1/data/raceresult/2015/01?session=</span><span class="nv">$session</span><span class="s2">"</span>
-</code></pre><h3 id='http-request-8'>HTTP Request</h3>
+</code></pre><h3 id='http-request-11'>HTTP Request</h3>
 <ul>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/raceresult/:dataid</code></li>
 <li><code>GET https://v2.mizuhanome.net/api/v1/data/raceresult/:year/:month (302)</code></li>
