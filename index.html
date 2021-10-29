@@ -1116,6 +1116,10 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://v2.mizuhanome.net
 <aside class="success">
   このAPIを使用するには前述のAPIキーセッションが必要です
 </aside>
+
+<aside class="notice">
+<code>/:dataid</code>は、365日以降のデータに対しては使用できません
+</aside>
 <h2 id='9e076156bc'>出走表</h2>
 <p><a href="https://v2.mizuhanome.net/races/201501010601/info/card">レース＞レース情報＞出走表</a>で使用しているデータを返します。</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.mizuhanome.net/api/v1/data/racecard/201501010601?session=</span><span class="nv">$session</span><span class="s2">"</span>
